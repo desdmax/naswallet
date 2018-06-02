@@ -29,6 +29,12 @@ window.addEventListener('message', function (e) {
         wallet = e.data.data.account;
         $(`*[data-id=account-wallet]`).html(wallet);
         $(`*[data-id=account-link]`).attr("href", "wallet.html?w=" + wallet);
+
+        loadAccount();
+
+        if (window.location.href.includes("wallet.html")) {
+            loadProfile();
+        }
     }
 });
 

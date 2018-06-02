@@ -1,11 +1,6 @@
 $(document).ready(() => {
     var accountData = JSON.parse(localStorage.getItem('account'));
     showAccount(accountData);
-    loadAccount();
-
-    if (window.location.href.includes("wallet.html")) {
-        loadProfile();
-    }
 });
 
 function loadAccount() {
