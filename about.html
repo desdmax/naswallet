@@ -14,75 +14,77 @@
 
 <body>
 
-    <div class="text-center error">
-        <div class="noExtension" hidden>
-            Please install
-            <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet" target="_blank">WebExtensionWallet</a> to use application
-        </div>
-        <div class="noExtensionLogin" hidden>
-            Please login in WebExtensionWallet with Mainnet
-        </div>
-    </div>
-
-    <header>
-        <nav class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <a id="logo" href="index.html" class="d-flex align-items-center">
-                    <i></i> NAS Wallet
-                </a>
-                <a href="widgets.html">Widgets</a>
-                <a href="about.html" class="active">About</a>
+    <div class="wrapper">
+        <div class="content">
+            <div class="text-center error">
+                <div class="noExtension" hidden>
+                    Please install
+                    <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet" target="_blank">WebExtensionWallet</a> to use application
+                </div>
+                <div class="noExtensionLogin" hidden>
+                    Please login in WebExtensionWallet with Mainnet
+                </div>
             </div>
 
-            <a href="wallet.html?" data-id="account-link" class="account d-flex align-items-center">
-                <i class="fal fa-user"></i>
-                <div>
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div data-id="account-name">No name</div>
-                        <span data-id="account-username">@noname</span>
+            <header>
+                <nav class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <a id="logo" href="index.html" class="d-flex align-items-center">
+                            <i></i> NAS Wallet
+                        </a>
+                        <a href="widgets.html">Widgets</a>
+                        <a href="about.html" class="active">About</a>
                     </div>
-                    <div data-id="account-wallet">loading...</div>
+
+                    <a href="wallet.html?" data-id="account-link" class="account d-flex align-items-center">
+                        <i class="fal fa-user"></i>
+                        <div>
+                            <div class="d-flex justify-content-start align-items-center">
+                                <div data-id="account-name">No name</div>
+                                <span data-id="account-username">@noname</span>
+                            </div>
+                            <div data-id="account-wallet">loading...</div>
+                        </div>
+                    </a>
+                </nav>
+            </header>
+
+            <main class="ml-auto mr-auto">
+
+                <div class="d-flex">
+                    <h3>NEBULAS</h3>
+                    <a href="https://nebulas.io/" target="_blank">nebulas.io</a>
                 </div>
-            </a>
-        </nav>
-    </header>
+                <div class="">
+                    Nebulas is a next generation public blockchain, aiming for a continuously improving ecosystem.
+                    <br> Based on its blockchain valuation mechanism, Nebulas proposes future-oriented incentive and consensus
+                    systems, and the ability to self-evolve without forking.
+                </div>
+                <hr>
+                <div class="d-flexa">
+                    <h3>NAS Wallet</h3>
+                </div>
+                <div class="">
+                    <a href="https://NasWallet.info/" target="_blank">NasWallet.info</a> is a site where you are currently. It is a DApp (decentralized application) of the
+                    Nebulas network that allows you to make a Visit Card of your wallet by attaching information. All information
+                    is stored in the Nebulas Blockchain and is available to everyone at any time. Attached information is
+                    associated with your wallet and no one except you can change it.
+                    <br>
+                    <br> After filling your wallet's profile, you can refer to it through a short username or through a full
+                    wallet address. See how it looks -
+                    <a href="wallet.html?u=NasWallet" target="_blank">NasWallet Visit Card</a>. Also available
+                    <a href="widgets.html" target="_blank">widgets</a> with quick payment that you can use on your website.
+                </div>
+            </main>
+        </div>
 
-    <main class="ml-auto mr-auto">
-
-        <div class="d-flex">
-            <h3>NEBULAS</h3>
-            <a href="https://nebulas.io/" target="_blank">nebulas.io</a>
-        </div>
-        <div class="">
-            Nebulas is a next generation public blockchain, aiming for a continuously improving ecosystem.
-            <br> Based on its blockchain valuation mechanism, Nebulas proposes future-oriented incentive and consensus systems,
-            and the ability to self-evolve without forking.
-        </div>
-        <hr>
-        <div class="d-flexa">
-            <h3>NAS Wallet</h3>
-        </div>
-        <div class="">
-            <a href="https://NasWallet.info/" target="_blank">NasWallet.info</a> is a site where you are currently. It is a DApp (decentralized application) of the Nebulas
-            network that allows you to make a Visit Card of your wallet by attaching information. All information is stored
-            in the Nebulas Blockchain and is available to everyone at any time. Attached information is associated with your
-            wallet and no one except you can change it.
-            <br>
-            <br> After filling your wallet's profile, you can refer to it through a short username or through a full wallet address.
-            See how it looks -
-            <a href="wallet.html?u=NasWallet" target="_blank">NasWallet Visit Card</a>. Also available
-            <a href="widgets.html" target="_blank">widgets</a> with quick payment that you can use on your website.
-        </div>
-    </main>
-
-    <footer>
-        <div class="d-flex justify-content-center">
+        <footer class="d-flex justify-content-center align-items-center">
             <div>
-                <div class="d-flex justify-content-center"> NasWallet.info (c) 2018 </div>
+                <div class="d-flex justify-content-center"> © 2018 NasWallet.info </div>
                 <div class="d-flex justify-content-center">Powered by Nebulas</div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">

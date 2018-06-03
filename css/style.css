@@ -16,14 +16,35 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   min-width: 800px;
-  color: #2A2A2A; }
+  color: #2A2A2A;
+  height: 100%; }
+
+.wrapper {
+  position: relative;
+  min-height: 100vh; }
+
+.content {
+  padding-bottom: 150px; }
+
+footer {
+  background: url("../img/1.png") #F2F2F2;
+  background-size: 160px;
+  border-top: 1px solid #E0E0E0;
+  bottom: 0;
+  color: #828282;
+  font-size: 14px;
+  height: 80px;
+  left: 0;
+  position: absolute;
+  width: 100%; }
 
 header {
   background: url("../img/1.png") #F2F2F2;
   background-size: 150px;
   width: 100%;
   padding: 0 40px;
-  border-bottom: 1px solid #E0E0E0; }
+  border-bottom: 1px solid #E0E0E0;
+  margin-bottom: 100px; }
   header nav {
     padding-top: 10px; }
     header nav #logo {
@@ -120,14 +141,6 @@ main {
         margin-bottom: 20px; }
   main .wallet-profile {
     margin-top: 100px; }
-
-footer {
-  background-size: 160px;
-  height: 150px;
-  margin-top: 150px;
-  position: relative;
-  bottom: 0;
-  width: 100%; }
 
 #editProfileModal .modal-header {
   background-color: #E9E9E9;

@@ -14,6 +14,29 @@ body {
     font-size: 16px;
     min-width: 800px;
     color: $color-black;
+    height: 100%;
+}
+
+.wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content {
+    padding-bottom: 150px;
+}
+
+footer {
+    background: $nas-background;
+    background-size: 160px;
+    border-top: 1px solid #E0E0E0;
+    bottom: 0;
+    color: #828282;
+    font-size: 14px;
+    height: 80px;
+    left: 0;
+    position: absolute;
+    width: 100%;
 }
 
 header {
@@ -22,6 +45,7 @@ header {
     width: 100%;
     padding: 0 40px;
     border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 100px;
     nav {
         padding-top: 10px;
         #logo {
@@ -146,16 +170,6 @@ main {
     .wallet-profile {
         margin-top: 100px;
     }
-}
-
-footer {
-    // background: $nas-background;
-    background-size: 160px; // border-top: 1px solid #E0E0E0;
-    height: 150px;
-    margin-top: 150px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
 }
 
 #editProfileModal {
