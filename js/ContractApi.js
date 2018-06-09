@@ -1,14 +1,18 @@
-const CONTRACT_ADDRESS = "n1gvL2Km9bxHRcUg4AL5JzbkrgRBmkFhVhD";
+const CONTRACT_ADDRESS = "n1fasGLi616KgrxNGfoGVPYxuGRdJKFCjut";
 
 class SmartContractApi {
     constructor(contractAdress) {
+        let Nebulas = require("nebulas");
+        this.neb = new Nebulas.Neb();
+        this.neb.setRequest(new Nebulas.HttpRequest("https://mainnet.nebulas.io"));
+
         let NebPay = require("nebpay");
         this.nebPay = new NebPay();
         this._contractAdress = contractAdress || CONTRACT_ADDRESS;
     }
 
     getContractAddress() {
-        return this.contractAdress;
+        return this._contractAdress;
     }
 
     _simulateCall({
@@ -33,17 +37,53 @@ class SmartContractApi {
         value = "0",
         callArgs = "[]",
         callFunction,
-        callback
+        callback,
+        callbackError
     }) {
+        let self = this;
         this.nebPay.call(this._contractAdress, value, callFunction, callArgs, {
-            callback: function (resp) {
-                if (resp && resp.result && resp.result.startsWith('TypeError')) {
-                    console.error(resp);
-                }
-                if (callback) {
-                    callback(resp);
+            callback: resp => {
+                if (resp) {
+                    if (resp.result && resp.result.startsWith('TypeError')) {
+                        console.error(resp);
+                    }
+                    if (resp == "Error: Transaction rejected by user") {
+                        console.warn(resp);
+                        if (callbackError) {
+                            callbackError({
+                                rejected: true
+                            });
+                        }
+                        return;
+                    }
+                    self._waitTransaction(resp.txhash, callback, callbackError);
                 }
             }
+        });
+    }
+
+    _waitTransaction(txhash, callback, callbackError) {
+        let self = this;
+        this.neb.api.getTransactionReceipt({
+            hash: txhash
+        }).then(function it(receipt) {
+            let status = receipt.status;
+            if (status == 0) { // failed
+                console.error(receipt);
+                if (callbackError) {
+                    callbackError(receipt);
+                }
+            }
+            if (status == 1 && callback) { // successful
+                callback(receipt);
+            }
+            if (status == 2) { // pending
+                setTimeout(() => self.neb.api.getTransactionReceipt({
+                    hash: txhash
+                }).then(it), 1000);
+                return;
+            }
+            return status;
         });
     }
 }
@@ -59,11 +99,12 @@ class ContractApi extends SmartContractApi {
         });
     }
 
-    setUsername(username, cb) {
+    setUsername(username, cb, cbErr) {
         this._call({
             callArgs: `["${username}"]`,
             callFunction: "setUsername",
-            callback: cb
+            callback: cb,
+            callbackError: cbErr
         });
     }
 
@@ -98,13 +139,24 @@ class ContractApi extends SmartContractApi {
         });
     }
 
-    setData(dataObj, cb) {
+    setData(dataObj, cb, cbErr) {
         let json = JSON.stringify([JSON.stringify(dataObj)]);
 
         this._call({
             callArgs: json,
             callFunction: "setData",
-            callback: cb
+            callback: cb,
+            callbackError: cbErr
+        });
+    }
+
+    sendPayment(wallet, cb, cbErr) {
+        this._call({
+            value: 1,
+            callArgs: `["${wallet}"]`,
+            callFunction: "sendPayment",
+            callback: cb,
+            callbackError: cbErr
         });
     }
 }

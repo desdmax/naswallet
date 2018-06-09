@@ -3,6 +3,7 @@
 @import "https://fonts.googleapis.com/css?family=Roboto:300,400,800";
 @import "../static/fontawesome/fontawesome-all.min.css";
 @import "notifications";
+@import "loader.css";
 $color-black: #2A2A2A;
 $color-gray-1: #4F4F4F;
 $color-gray-2: #828282;
@@ -186,8 +187,8 @@ main {
                 background: url('../img/wallet.png') no-repeat center #E9E9E9;
                 background-size: 35px;
                 height: 35px;
-                width: 35px;
                 margin: 0 20px;
+                width: 35px;
             }
             .walletAddress {
                 font-size: 12px;
@@ -262,6 +263,15 @@ main {
                 font-weight: 200;
                 padding: 10px 20px;
             }
+        }
+    }
+    .status {
+        font-size: 14px;
+        color: #6c757d;
+        margin-right: 20px;
+        i {
+            margin-left: 10px;
+            font-size: 16px;
         }
     }
 }
@@ -355,5 +365,18 @@ main {
         border-radius: 0 !important;
         font-weight: 200;
         padding: 10px 20px;
+        position: relative;
+        & .status {
+            color: #868686;
+            font-weight: 400;
+            position: absolute;
+            bottom: -60px;
+            i {
+                margin: 0 10px 0 0;
+            }
+            .cssload-whirlpool {
+                margin: -20px 0 0 -10px;
+            }
+        }
     }
 }

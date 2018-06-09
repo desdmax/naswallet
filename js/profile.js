@@ -161,17 +161,27 @@ function showProfile(data, profileWallet, username) {
 }
 
 function setDonateHandler(wallet) {
-    var NebPay = require("nebpay");
-    var nebPay = new NebPay();
-
-    $("#donate").off("click");
+    $("#donate").off();
     $("#donate").click(() => {
         if (isExtensionExist) {
-            nebPay.pay(wallet, 0, {
-                qrcode: {
-                    showQRCode: false
+            let status =
+                `<div class="cssload-container">
+                    <div class="cssload-whirlpool"></div>
+                </div>`;
+
+            $(".wallet-profile .status").html(status);
+
+            contract.sendPayment(wallet,
+                resp => {
+                    status = `<i class="far fa-check" style="color: #4285f4;"></i> OK`;
+                    $(".wallet-profile .status").html(status);
                 },
-            });
+                err => {
+                    let error = err.rejected ? "Payment canceled" : err.execute_error ? err.execute_error : err.execute_result;
+                    status = '<i class="fa fa-times" style="color: #de4f5c;"></i>' + error;
+                    $(".wallet-profile .status").html(status);
+                }
+            );
         }
     });
 }

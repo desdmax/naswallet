@@ -2,6 +2,7 @@
 @import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css";
 @import "https://fonts.googleapis.com/css?family=Roboto:300,400,800";
 @import url(../static/fontawesome/fontawesome-all.min.css);
+@import url(loader.css);
 .error {
   background-color: #ffbaba; }
 
@@ -153,8 +154,8 @@ main {
     background: url("../img/wallet.png") no-repeat center #E9E9E9;
     background-size: 35px;
     height: 35px;
-    width: 35px;
-    margin: 0 20px; }
+    margin: 0 20px;
+    width: 35px; }
   #editProfileModal .modal-header .walletAddress {
     font-size: 12px; }
 #editProfileModal .modal-desc {
@@ -208,6 +209,13 @@ main {
     border-radius: 0 !important;
     font-weight: 200;
     padding: 10px 20px; }
+#editProfileModal .status {
+  font-size: 14px;
+  color: #6c757d;
+  margin-right: 20px; }
+  #editProfileModal .status i {
+    margin-left: 10px;
+    font-size: 16px; }
 
 .wallet-profile {
   background-color: #F2F2F2;
@@ -278,6 +286,16 @@ main {
     border-color: #4285F4;
     border-radius: 0 !important;
     font-weight: 200;
-    padding: 10px 20px; }
+    padding: 10px 20px;
+    position: relative; }
+    .wallet-profile .btn .status {
+      color: #868686;
+      font-weight: 400;
+      position: absolute;
+      bottom: -60px; }
+      .wallet-profile .btn .status i {
+        margin: 0 10px 0 0; }
+      .wallet-profile .btn .status .cssload-whirlpool {
+        margin: -20px 0 0 -10px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -61,7 +61,24 @@ function editProfileHandler() {
             }
         }
 
-        contract.setData(data, (resp) => {});
+        let status =
+            `<div class="cssload-container">
+                <div class="cssload-whirlpool"></div>
+            </div>`;
+
+        $("#editProfileModal .status").html(status);
+
+        contract.setData(data,
+            resp => {
+                status = `Saved <i class="far fa-check" style="color: #4285f4;"></i>`;
+                $("#editProfileModal .status").html(status);
+            },
+            err => {
+                let error = err.rejected ? "Transaction canceled" : err.execute_error ? err.execute_error : err.execute_result;
+                status = `${error} <i class="far fa-times" style="color: #de4f5c;"></i>`;
+                $("#editProfileModal .status").html(status);
+            }
+        );
     }
 }
 
